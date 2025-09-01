@@ -10,9 +10,9 @@ const Service = require("../services/game_event.service");
 /* Retrieves a single game event */
 const getGameEvent = async (root, { gameEventId }, { next }) => {
   try {
-    const gameEvent = await GameEventModel.findById(gameEventId);
+    // 3.1. Retrieve data
 
-    return gameEvent;
+    return gameEventId;
   } catch (error) {
     return next(error);
   }
