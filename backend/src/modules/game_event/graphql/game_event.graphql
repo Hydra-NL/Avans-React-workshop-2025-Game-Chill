@@ -5,8 +5,8 @@ extend type Query {
 
 extend type Mutation {
   createGameEvent(dataInput: GameEventInput): GameEvent
-  updateGameEvent(dataInput: GameEventInput): GameEvent
-  deleteGameEvent(gameEventId: ID): Boolean
+  updateGameEvent(gameEventId: ID!, dataInput: GameEventInput): GameEvent
+  deleteGameEvent(gameEventId: ID!): Boolean
 }
 
 # Game event list
@@ -39,8 +39,10 @@ input GameEventInput {
   platform: String
   voice: Boolean
   players: Int
+  main_image_url: String
 
   game: GameInput
+
   participants: [ID]
 }
 

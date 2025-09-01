@@ -31,7 +31,7 @@ const styles = theme => ({
     },
   },
 
-  deleteButton: {
+  button: {
     color: "#d32f2f",
     padding: theme.spacing(0.5),
     "&:hover": {

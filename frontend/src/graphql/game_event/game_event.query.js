@@ -11,6 +11,11 @@ export const GET_GAME_EVENT = gql`
       voice
       players
       main_image_url
+      created_by {
+        id
+        first_name
+        last_name
+      }
       game {
         title
         description
