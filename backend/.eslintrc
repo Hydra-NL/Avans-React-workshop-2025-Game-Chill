@@ -1,0 +1,82 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "settings": {
+    "import/resolver" : {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src"
+        ]
+      },
+      "alias" : {
+        "map" : [
+          ["@/events","./src/events"],
+          ["@/middleware","./src/middleware"],
+          ["@/graphql","./src/graphql"],
+          ["@/modules","./src/modules"],
+          ["@/constants","./src/utils/constants"],
+          ["@/helpers","./src/utils/helpers"],
+          ["@/security","./src/utils/security"],
+          ["@/validation","./src/utils/validation"]
+        ]
+      }
+    }
+  },
+    // Report unused `eslint-disable` comments.
+  "reportUnusedDisableDirectives": true,
+
+  // Tell ESLint not to ignore dot-files, which are ignored by default.
+  "ignorePatterns": ["!.*.js"],
+  "rules": {
+    // Only add parents when needed so `fn = (param1) =>` should be just `fn = param1 =>`
+    "arrow-parens": ["error", "as-needed"],
+
+    // Only allow non camelCase for destruct
+    "camelcase": ["off", { "properties": "always" }],
+
+    // Enforces 2 space indentation
+    "indent": ["error", 2],
+
+    // Soft rule of max length 190
+    "max-len": ["warn", 190, 2],
+
+    // Warn for `console.log` and allow info and error
+    "no-console": ["warn", { "allow": ["info", "error"] }],
+
+    // We allow param reassign, less confusion and overhead
+    "no-param-reassign": "off",
+
+    // Turned off to avoid moving on new line with objects
+    "object-curly-newline": ["off"],
+
+    // Operators at the end instead of the beginning
+    "operator-linebreak": ["error", "after"],
+
+    // CarCollect prefers double quotes
+    "quotes": ["error", "double"],
+
+    // Allow `./config/config-${process.env.CONFIG_FILE || "local"}.js`
+    "import/no-dynamic-require": "off",
+
+    // Can use function before they are defined
+    "no-use-before-define": ["error", { "variables": false }],
+
+    // Allow for example `company._id`
+    "no-underscore-dangle": "off",
+
+    // We use `class` for datasources we allow no lines between the members
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+
+    // Don't require `this` in classes - we don't need it in this project
+    "class-methods-use-this": "off"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "game-chill-frontend",
+  "description": "Game & Chill",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development next dev -p 7100",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "npx rimraf node_modules package-lock.json .next"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.13.9",
+    "@emotion/cache": "11.14.0",
+    "@emotion/react": "11.14.0",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "11.14.1",
+    "@mui/icons-material": "7.3.1",
+    "@mui/material": "7.3.1",
+    "nprogress": "^0.2.0",
+    "graphql": "^16.11.0",
+    "next": "15.5.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-hook-form": "^7.62.0",
+    "yup": "^1.7.0"
+  },
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2"
+  }
+}

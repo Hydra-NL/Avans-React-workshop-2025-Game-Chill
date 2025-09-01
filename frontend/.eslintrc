@@ -1,0 +1,132 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2023": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "settings": {
+    "import/resolver" : {
+      "alias" : {
+        "map" : [
+          ["@/actions","./src/actions"],
+          ["@/components","./src/components"],
+          ["@/constants","./src/utils/constants"],
+          ["@/content","./src/content"],
+          ["@/fields","./src/components/field"],
+          ["@/forms","./src/modules/form"],
+          ["@/graphql","./src/graphql"],
+          ["@/helpers","./src/utils/helpers"],
+          ["@/hooks","./src/hooks"],
+          ["@/layouts","./src/layouts"],
+          ["@/modules","./src/modules"],
+          ["@/public","./public"]
+        ]
+      }
+    }
+  },
+  "rules": {
+    // Only add parents when needed so `fn = (param1) =>` should be just `fn = param1 =>`
+    "arrow-parens": ["error", "as-needed"],
+
+    // Only allow non camelCase for destruct
+    "camelcase": ["off", { "properties": "always" }],
+
+    // Enforces 2 space indentation
+    "indent": ["error", 2],
+
+    // Soft rule of max length 190
+    "max-len": ["warn", 190, 2],
+
+    // Warn for `console.log` and allow info and error
+    "no-console": ["warn", { "allow": ["info", "error"] }],
+
+    // We allow param reassign, less confusion and overhead
+    "no-param-reassign": "off",
+
+    // Turned off to avoid moving on new line with objects
+    "object-curly-newline": ["off"],
+
+    // Operators at the end instead of the beginning
+    "operator-linebreak": ["error", "after"],
+
+    // CarCollect prefers double quotes
+    "quotes": ["error", "double"],
+
+    // Default export is not always nice, it will make it hard to do big refactors.
+    "import/prefer-default-export": "off",
+
+    // In Table fields "render" and "cell" eslint wants us to define these functions as components.
+    "react/display-name": "off",
+
+    // It's not always needed in the hook useEffect`[prop]`
+    "react-hooks/exhaustive-deps": "off",
+
+    // We allow object, array, any we don't need so much detail in prop-types
+    "react/forbid-prop-types": "off",
+
+    // Will be removed from React v19
+    "react/prop-types": "off",
+
+    // Not required anymore since React v17
+    "react/react-in-jsx-scope": "off",
+
+    // Any prop not having required should use default value, we don't want this.
+    "react/require-default-props": "off",
+
+    // We prefer `<Fragment>` over `<>`
+    "react/jsx-fragments": "off",
+
+    // Spread `...rest` should be allowed to avoid unnecessary prop defining
+    "react/jsx-props-no-spreading": "off",
+
+    // In tables we got components inside an array, so we turn it off for the table components
+    "react/no-unstable-nested-components": "off",
+
+    // Sorting imports `{ a, b, c }`
+    "sort-imports": ["error", {
+      "allowSeparatedGroups": true,
+      "ignoreCase": true,
+      "ignoreDeclarationSort": true,
+      "ignoreMemberSort": false
+    }],
+
+    // css Required for Emotion
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+
+    // Specific import order per project
+    "import/order": ["error", {
+      "pathGroups": [
+        {
+          "pattern": "@mui/material/**",
+          "group": "external",
+          "position": "after"
+        },
+        {
+          "pattern": "@/**",
+          "group": "internal",
+          "position": "after"
+        }
+      ],
+      "pathGroupsExcludedImportTypes": ["internal", "external", "builtins"],
+      "groups": [
+        "builtin",
+        "external",
+        "unknown",
+        ["internal", "sibling", "parent"],
+        "index",
+        "object",
+        "type"
+      ]
+    }]
+  }
+}

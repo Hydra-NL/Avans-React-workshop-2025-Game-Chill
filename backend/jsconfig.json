@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/helpers/*": ["./src/utils/helpers/*"],
+      "@/validation/*": ["./src/utils/validation/*"],
+      "@/security/*": ["./src/utils/security/*"],
+      "@/constants/*": ["./src/utils/constants/*"],
+    }
+  },
+}

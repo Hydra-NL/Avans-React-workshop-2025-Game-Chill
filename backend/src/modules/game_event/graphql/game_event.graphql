@@ -1,0 +1,60 @@
+extend type Query {
+  getGameEvent(gameEventId: ID): GameEvent
+  getGameEvents: GameEventList
+}
+
+extend type Mutation {
+  createGameEvent(dataInput: GameEventInput): GameEvent
+  updateGameEvent(dataInput: GameEventInput): GameEvent
+  deleteGameEvent(gameEventId: ID): Boolean
+}
+
+# Game event list
+# --------------------
+type GameEventList {
+  total: Int
+  game_events: [GameEvent]
+}
+
+# Game event base type
+# --------------------
+type GameEvent {
+  id: ID
+  title: String
+  description: String
+  platform: String
+  voice: Boolean
+  players: Int
+  main_image_url: String
+
+  game: Game
+
+  created_by: User
+  participants: [User]
+}
+
+input GameEventInput {
+  title: String
+  description: String
+  platform: String
+  voice: Boolean
+  players: Int
+
+  game: GameInput
+  participants: [ID]
+}
+
+# Game base type
+# --------------------
+type Game {
+  title: String
+  description: String
+  tags: [String]
+  image: String
+}
+
+input GameInput {
+  title: String
+  description: String
+  tags: [String]
+}
