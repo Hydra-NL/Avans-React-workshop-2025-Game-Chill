@@ -12,6 +12,7 @@ What are we going to create?
 --- --- --- --- --- ---
 
 ## About us & our tech stack
+
 ### Frontend (FE) Setup
 - General React + MUI
 - Project stucture
@@ -25,21 +26,20 @@ What are we going to create?
 ## Setup Node 24.2.0
 Win
 - Download: https://github.com/coreybutler/nvm-windows
-- `nvm install 24.2.0`
-- `nvm use 24.2.0`
+nvm install 24.2.0
+nvm use 24.2.0
 
 Mac
 - Install nvm first
-- `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash`
-- `nvm install 24.2.0`
-- `nvm use 24.2.0`
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 24.2.0
+nvm use 24.2.0
 
 --- --- --- --- --- ---
-## Profile Page Development
-
+# 1. Profile Page Development
 ### 1. Query Data Integration - Demo
 **Goal:** Replace hardcoded data with real GraphQL query data
-- There is a hardcoded constant ready, which has to be replaced with real data
+- There is a hardcoded constant ready which has to be replaced with real data
 - Pass props to the correct components
 - **Files:** `frontend/src/pages/profile/index.page.jsx`, `frontend/src/modules/profile/components`
 
@@ -73,7 +73,7 @@ Mac
 
 --- --- --- --- --- ---
 
-# Overview page
+# 2. Overview page
 ### 1. Hardcoded Data to real Query data
 **Goal:** Replace hardcoded data with real GraphQL query data
 - There is a hardcoded constant ready which has to be replaced with real data
@@ -104,7 +104,7 @@ Mac
 
 --- --- --- --- --- ---
 
-# Detail page - **Completely Solo**
+# 3. Detail page - **Completely Solo**
 1. Retrieve data
 2. Add loading skeletons
 3. Add a way to navigate to the previous page
