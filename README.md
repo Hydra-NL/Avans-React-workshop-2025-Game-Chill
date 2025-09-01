@@ -89,7 +89,7 @@ nvm use 24.2.0
 - Style de card met Material-UI componenten  
 - Voeg gaming-specifieke velden toe (rating, genre, players)
 - **Bonus:** Voeg loading effect toe op je overview page
-<!-- Hier ff file naar component met delete functie -->
+- **Files:** `frontend/src/modules/overview/components/game_event_card.jsx`
 
 **### 3. Create Card Form Mutation - Demo/Solo**
 **Doel:** Implementeer functionaliteit om nieuwe game events toe te voegen

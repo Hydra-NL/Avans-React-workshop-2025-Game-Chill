@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 // Core
 import { Dialog, Divider, Grid, Stack, Typography } from "@mui/material";
 import { Add } from "@mui/icons-material";
-import { DefaultLayout } from "@/layouts";
+import { DefaultLayout, OverviewPageSkeleton } from "@/layouts";
 import { Button } from "@/components";
 
 import GameEventCard from "../../modules/overview/components/game_event_card";
@@ -17,7 +17,7 @@ function OverviewPage() {
 
   const { data, loading, refetch } = useQuery(GET_GAME_EVENTS);
 
-  if (loading) return "loading...";
+  if (loading) return <OverviewPageSkeleton />;
 
   const gameEvents = data?.getGameEvents?.game_events || [];
 

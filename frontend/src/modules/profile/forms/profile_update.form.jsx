@@ -4,20 +4,30 @@ import { useMutation } from "@apollo/client";
 
 // Core
 import { Alert, DialogActions, DialogContent, DialogTitle, Stack } from "@mui/material";
+import { NumberField, PickerField, TextField } from "@/fields";
 import { Button } from "@/components";
-import { TextField } from "@/fields";
 
 // GraphQL
 import { UPDATE_ME } from "@/graphql";
 
 function ProfileUpdateForm(props) {
   const {
+    user,
     onClose,
   } = props;
 
   const [updateMe] = useMutation(UPDATE_ME);
 
-  const { control, handleSubmit, formState, setError } = useForm({
+  const { control, handleSubmit, formState, setError, setValue } = useForm({
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      gamertag: user.gamertag,
+      age: user.age,
+      bio: user.bio,
+      platforms: user.platforms,
+    },
     mode: "onChange",
   });
 
@@ -30,6 +40,8 @@ function ProfileUpdateForm(props) {
     }
   };
 
+  const platformOptions = ["PC", "PlayStation", "Xbox", "Nintendo Switch"];
+
   return (
     <Fragment>
       <DialogTitle>
@@ -38,19 +50,67 @@ function ProfileUpdateForm(props) {
 
       <DialogContent>
         <form>
-          <Stack direction="row" spacing={2}>
+          <TextField
+            name="gamertag"
+            label="Gamer tag"
+            placeholder="Jessenator#123"
+            control={control}
+          />
+
+          <Stack direction="row" gap={2}>
             <TextField
               name="first_name"
               label="First name"
+              placeholder="Jesse"
               control={control}
             />
 
             <TextField
               name="last_name"
               label="Last name"
+              placeholder="Doe"
               control={control}
             />
           </Stack>
+
+          <TextField
+            name="email"
+            label="Email"
+            placeholder="gamertag@email.com"
+            control={control}
+          />
+
+          <Stack direction="row" gap={2}>
+            <NumberField
+              name="age"
+              label="Age"
+              control={control}
+              placeholder={18}
+              sx={{ maxWidth: "50%" }}
+            />
+
+            <PickerField
+              name="platforms"
+              control={control}
+              setValue={setValue}
+              options={platformOptions.map(platform => ({
+                value: platform,
+                textPrimary: platform,
+              }))}
+              label="Platforms"
+              multiple
+              sx={{ minWidth: "50%" }}
+            />
+          </Stack>
+
+          <TextField
+            name="bio"
+            label="Bio"
+            placeholder="Write something interesting about yourself..."
+            control={control}
+            rows={4}
+            multiline
+          />
 
           {formState.errors?.submitForm && (
             <Alert severity="error">
