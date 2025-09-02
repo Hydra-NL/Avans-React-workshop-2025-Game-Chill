@@ -31,11 +31,11 @@ const getGameEvents = async (root, args, { next }) => {
 // Mutation
 // ----------------------------------------------------------------
 /* Creates Game Event */
-const createGameEvent = async (root, { inputData }, { req, next }) => {
+const createGameEvent = async (root, { dataInput }, { req, next }) => {
   try {
     const currentUser = await UserModel.findById(req.session.userId);
 
-    const createdAuction = await Service.processCreateGameEvent(currentUser, inputData);
+    const createdAuction = await Service.processCreateGameEvent(currentUser, dataInput);
     return createdAuction;
   } catch (error) {
     return next(error);
@@ -43,12 +43,12 @@ const createGameEvent = async (root, { inputData }, { req, next }) => {
 };
 
 /* Update Game Event */
-const updateGameEvent = async (root, { gameEventId, inputData }, { req, next }) => {
+const updateGameEvent = async (root, { gameEventId, dataInput }, { req, next }) => {
   try {
     const currentUser = await UserModel.findById(req.session.userId);
     const gameEvent = await GameEventModel.findById(gameEventId);
 
-    const updatedGameEvent = await Service.processUpdateGameEvent(currentUser, gameEvent, inputData);
+    const updatedGameEvent = await Service.processUpdateGameEvent(currentUser, gameEvent, dataInput);
     return updatedGameEvent;
   } catch (error) {
     return next(error);
@@ -79,6 +79,11 @@ const userResolver = {
     createGameEvent,
     updateGameEvent,
     deleteGameEvent,
+  },
+
+  // Populate
+  GameEvent: {
+    created_by: async gameEvent => (await gameEvent.populate("created_by")).created_by,
   },
 };
 

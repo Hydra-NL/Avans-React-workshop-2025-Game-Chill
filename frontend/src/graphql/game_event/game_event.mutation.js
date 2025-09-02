@@ -16,8 +16,8 @@ export const CREATE_GAME_EVENT = gql`
 
 /* Update game event */
 export const UPDATE_GAME_EVENT = gql`
-  mutation updateGameEvent($dataInput: GameEventInput) {
-    updateGameEvent(dataInput: $dataInput) {
+  mutation updateGameEvent($gameEventId: ID!, $dataInput: GameEventInput) {
+    updateGameEvent(gameEventId: $gameEventId, dataInput: $dataInput) {
       id
       title
       description
@@ -30,7 +30,7 @@ export const UPDATE_GAME_EVENT = gql`
 
 /* Delete game event */
 export const DELETE_GAME_EVENT = gql`
-  mutation deleteGameEvent($gameEventId: ID) {
+  mutation deleteGameEvent($gameEventId: ID!) {
     deleteGameEvent(gameEventId: $gameEventId)
   }
 `;

@@ -16,8 +16,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Edit, Favorite } from "@mui/icons-material";
-import { DefaultLayout } from "@/layouts";
+import { ArrowBack, Edit, Favorite } from "@mui/icons-material";
+import { DefaultLayout, GameEventPageSkeleton } from "@/layouts";
 import { Button } from "@/components";
 
 import GameEventSignUpForm from "../../modules/game_event/forms/game_event_sign_up.form";
@@ -36,24 +36,36 @@ function GameEventPage() {
     skip: !gameEventId,
   });
 
-  if (loading) return "loading...";
+  if (loading) return <GameEventPageSkeleton />;
 
   const gameEvent = data?.getGameEvent || {};
 
   return (
     <DefaultLayout title={gameEvent.title}>
-      <Stack alignItems="center" direction="row" justifyContent="space-between" gap={2}>
-        <Typography variant="h4">
-          {gameEvent.title}
-        </Typography>
-
-        <Button
-          endIcon={<Edit />}
-          variant="contained"
-          onClick={() => setDialogState(true)}
-        >
-          Join event
+      <Stack alignItems="flex-start" gap={1}>
+        <Button onClick={() => router.back()} startIcon={<ArrowBack />}>
+          Go back
         </Button>
+
+        <Stack
+          width="100%"
+          alignItems="center"
+          direction="row"
+          justifyContent="space-between"
+          gap={2}
+        >
+          <Typography variant="h4">
+            {gameEvent.title}
+          </Typography>
+
+          <Button
+            endIcon={<Edit />}
+            variant="contained"
+            onClick={() => setDialogState(true)}
+          >
+            Join event
+          </Button>
+        </Stack>
       </Stack>
 
       <Divider sx={{ mt: 2, mb: 3 }} />
@@ -71,16 +83,11 @@ function GameEventPage() {
                   {gameEvent.description}
                 </Typography>
 
-                <Stack direction="row" gap={1}>
-                  {(gameEvent.tags || []).map(eventTag => (
-                    <Chip
-                      key={eventTag}
-                      label={eventTag}
-                      size="small"
-                      color="secondary"
-                    />
-                  ))}
-                </Stack>
+                {gameEvent.tag && (
+                  <div>
+                    <Chip label={gameEvent.tag} size="small" color="secondary" />
+                  </div>
+                )}
 
                 <Divider />
 
@@ -90,11 +97,11 @@ function GameEventPage() {
                   </Typography>
 
                   <Typography variant="body1">
-                    {`Platform: ${gameEvent.platform}`}
+                    {`Platform: ${gameEvent.platform || "Non specified"}`}
                   </Typography>
 
                   <Typography variant="body1">
-                    {`Format: ${gameEvent.format}`}
+                    {`Format: ${gameEvent.format || "Non specified"}`}
                   </Typography>
 
                   <Typography variant="body1">
@@ -111,7 +118,7 @@ function GameEventPage() {
                     </Typography>
                   </Stack>
 
-                  {gameEvent.participants?.length !== 0 ? (
+                  {gameEvent.participants?.length < 0 ? (
                     (gameEvent.participants || []).map(participant => (
                       <Stack key={participant.id} direction="row" gap={1}>
                         <Favorite color="primary" fontSize="small" />
@@ -148,15 +155,12 @@ function GameEventPage() {
               </Typography>
 
               <Stack direction="row" gap={1} mt={2}>
-                {(gameEvent.game?.tags || []).map(gameTag => (
-                  <Chip
-                    key={gameTag}
-                    label={gameTag}
-                    size="small"
-                    variant="outlined"
-                    color="primary"
-                  />
-                ))}
+                <Chip
+                  label={gameEvent?.game?.tag}
+                  size="small"
+                  variant="outlined"
+                  color="primary"
+                />
               </Stack>
             </CardContent>
           </Card>

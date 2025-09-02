@@ -8,5 +8,6 @@ export const AUTH_FRAGMENT = gql`
     first_name
     last_name
     status
+    platform
   }
 `;
