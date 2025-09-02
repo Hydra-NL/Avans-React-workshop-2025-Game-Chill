@@ -17,8 +17,8 @@ const schema = new mongoose.Schema({
   city: String,
   country: String,
   bio: String,
-  platforms: [String],
-  genres: [String],
+  platform: String,
+  genre: String,
   availability: String,
   play_style: String,
 }, {
