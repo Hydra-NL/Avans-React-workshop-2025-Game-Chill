@@ -29,7 +29,7 @@ function ProfileInfo(props) {
       <CardContent>
         <div css={classes.persona}>
           <Avatar
-            src={"https://static.vecteezy.com/system/resources/previews/049/423/252/non_2x/a-cool-mysterious-and-powerful-blue-masked-ninja-character-avatar-in-a-hooded-cloak-perfect-for-gaming-channels-esports-teams-and-social-media-profiles-free-vector.jpg"}
+            src="https://static.vecteezy.com/system/resources/previews/049/423/252/non_2x/a-cool-mysterious-and-powerful-blue-masked-ninja-character-avatar-in-a-hooded-cloak-perfect-for-gaming-channels-esports-teams-and-social-media-profiles-free-vector.jpg"
             css={classes.avatar}
           />
 
@@ -39,7 +39,7 @@ function ProfileInfo(props) {
             </Typography>
 
             <Typography variant="h6" color="primary">
-              {user.gamertag}
+              {user.gamertag || "guest#1234"}
             </Typography>
           </Box>
         </div>
@@ -59,27 +59,28 @@ function ProfileInfo(props) {
             <Stack spacing={2}>
               <Box display="flex" alignItems="center" gap={2}>
                 <Person sx={{ color: "primary.main" }} />
+
                 <Box>
                   <Typography variant="caption" color="textSecondary">
                     Age
                   </Typography>
+
                   <Typography variant="body1">
-                    {user.age}
+                    {user.age || "Unknown"}
                   </Typography>
                 </Box>
               </Box>
 
               <Box display="flex" alignItems="center" gap={2}>
                 <LocationOn sx={{ color: "primary.main" }} />
+
                 <Box>
                   <Typography variant="caption" color="textSecondary">
                     City - Location
                   </Typography>
+
                   <Typography variant="body1">
-                    {user.city}
-                    {" "}
-                    -
-                    {user.country}
+                    {`${user.city || "Unknown"} - ${user.country || "Unknown"}`}
                   </Typography>
                 </Box>
               </Box>
@@ -90,10 +91,12 @@ function ProfileInfo(props) {
             <Stack spacing={2}>
               <Box display="flex" alignItems="center" gap={2}>
                 <Email sx={{ color: "primary.main" }} />
+
                 <Box>
                   <Typography variant="caption" color="text.secondary">
                     Email
                   </Typography>
+
                   <Typography variant="body1">
                     {user.email}
                   </Typography>
@@ -102,12 +105,14 @@ function ProfileInfo(props) {
 
               <Box display="flex" alignItems="center" gap={2}>
                 <Schedule sx={{ color: "primary.main" }} />
+
                 <Box>
                   <Typography variant="caption" color="text.secondary">
                     Member Since
                   </Typography>
+
                   <Typography variant="body1" fontWeight="medium">
-                    {user.createdAt}
+                    {user.createdAt || "Unknown"}
                   </Typography>
                 </Box>
               </Box>

@@ -1,12 +1,12 @@
 extend type Query {
-  getGameEvent(gameEventId: ID): GameEvent
+  # 2.1. Create a new query
   getGameEvents: GameEventList
 }
 
 extend type Mutation {
-  createGameEvent(dataInput: GameEventInput): GameEvent
-  updateGameEvent(dataInput: GameEventInput): GameEvent
-  deleteGameEvent(gameEventId: ID): Boolean
+  # 2.3. GraphQL mutation resolver/schema
+  updateGameEvent(gameEventId: ID!, dataInput: GameEventInput): GameEvent
+  # 2.4. Create a GraphQL mutation for the DELETE operation
 }
 
 # Game event list
@@ -24,7 +24,6 @@ type GameEvent {
   description: String
   platform: String
   voice: Boolean
-  players: Int
   main_image_url: String
 
   game: Game
@@ -35,13 +34,7 @@ type GameEvent {
 
 input GameEventInput {
   title: String
-  description: String
-  platform: String
-  voice: Boolean
-  players: Int
-
-  game: GameInput
-  participants: [ID]
+  # 2.3. GraphQL mutation resolver/schema
 }
 
 # Game base type

@@ -15,12 +15,13 @@ type User {
   email: String
   status: String
   update_count: Int
+
+  # 1.2. Update GraphQL schema and FE query
 }
 
 input MeInput {
   first_name: String
   last_name: String
-  email: String
-  status: String
+  # 1.3. Add field
 }
 

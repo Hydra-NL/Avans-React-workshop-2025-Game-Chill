@@ -5,13 +5,12 @@ const gameEventSchema = new mongoose.Schema({
   description: String,
   platform: String,
   voice: Boolean,
-  players: Number,
   main_image_url: String,
 
   game: {
     title: String,
     description: String,
-    tags: [String],
+    tag: String,
   },
 
   // Mongoose Schema

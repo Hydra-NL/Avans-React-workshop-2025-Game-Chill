@@ -6,10 +6,8 @@ const processUpdateMe = async (currentUser, args) => {
   try {
     const { dataInput } = args;
 
-    // dataInput.update_count = currentUser.update_count ? currentUser.update_count + 1 : 1;
-    // if (currentUser.update_count >= 10) {
-    //   throw new Error("Max update count");
-    // }
+    // 1.4. Update counter logic
+    // 1.4. Error debugging for max updates
 
     const updatedUser = await UserModel.findByIdAndUpdate(currentUser.id, dataInput, { new: true });
     return updatedUser;

@@ -1,19 +1,14 @@
+// 2.2. Style the card with Material-UI components
 const styles = theme => ({
   card: {
-    display: "flex",
-    borderRadius: "12px",
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-    transition: "all 0.3s ease",
+    // Styling for the Card goes here
   },
 
   cardMedia: {
-    height: 210,
-    width: 140,
-    flexShrink: 0,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    // Styling for the CardMedia goes here
   },
 
+  // Use the classes below or add more
   clickableTitle: {
     cursor: "pointer",
     color: theme.palette.primary.main,
@@ -23,7 +18,7 @@ const styles = theme => ({
     },
   },
 
-  deleteButton: {
+  button: {
     color: "#d32f2f",
     padding: theme.spacing(0.5),
     "&:hover": {

@@ -8,5 +8,8 @@ export const AUTH_FRAGMENT = gql`
     first_name
     last_name
     status
+
+    # 1.2. Update GraphQL schema and FE query
+    # 1.4. Update counter logic
   }
 `;

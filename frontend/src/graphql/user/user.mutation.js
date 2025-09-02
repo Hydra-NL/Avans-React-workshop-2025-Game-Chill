@@ -8,6 +8,8 @@ export const UPDATE_ME = gql`
       email
       last_name
       first_name
+
+      # 1.3. Add field
     }
   }
 `;

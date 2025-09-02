@@ -6,6 +6,9 @@ import { useTheme } from "@mui/material/styles";
 import { Avatar, Button, IconButton, AppBar as MuiAppBar, Stack, Toolbar, Tooltip, Typography } from "@mui/material";
 import { Chat, Favorite, Search, SportsEsports } from "@mui/icons-material";
 
+// Hooks
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 // GraphQL
 import { GET_ME } from "@/graphql";
 
@@ -15,6 +18,7 @@ import styles from "./app_bar.style";
 function AppBar() {
   const theme = useTheme();
   const classes = styles(theme);
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
   const { data, loading } = useQuery(GET_ME);
 
@@ -32,38 +36,58 @@ function AppBar() {
             <SportsEsports sx={{ color: "white", fontSize: "24px" }} />
           </IconButton>
 
-          <Typography css={classes.logoText}>
-            Game & Chill
-          </Typography>
+          {isDesktop && (
+            <Typography css={classes.logoText}>
+              Game & Chill
+            </Typography>
+          )}
         </div>
 
         <Stack direction="row" gap={2}>
-          <Button
-            component={Link}
-            href="/overview"
-            startIcon={<Search />}
-            css={classes.navButton}
-          >
-            Overview
-          </Button>
+          {isDesktop ? (
+            <Button
+              component={Link}
+              href="/overview"
+              startIcon={<Search />}
+              css={classes.navButton}
+            >
+              Overview
+            </Button>
+          ) : (
+            <IconButton href="/overview">
+              <Search />
+            </IconButton>
+          )}
 
-          <Button
-            component={Link}
-            href="/matches"
-            startIcon={<Favorite />}
-            css={classes.navButton}
-          >
-            Matches
-          </Button>
+          {isDesktop ? (
+            <Button
+              component={Link}
+              href="/matches"
+              startIcon={<Favorite />}
+              css={classes.navButton}
+            >
+              Matches
+            </Button>
+          ) : (
+            <IconButton href="/matches">
+              <Favorite />
+            </IconButton>
+          )}
 
-          <Button
-            component={Link}
-            href="/messages"
-            startIcon={<Chat />}
-            css={classes.navButton}
-          >
-            Messages
-          </Button>
+          {isDesktop ? (
+            <Button
+              component={Link}
+              href="/messages"
+              startIcon={<Chat />}
+              css={classes.navButton}
+            >
+              Messages
+            </Button>
+          ) : (
+            <IconButton href="/messages">
+              <Chat />
+            </IconButton>
+          )}
 
           <Tooltip title="Profile" arrow>
             <IconButton

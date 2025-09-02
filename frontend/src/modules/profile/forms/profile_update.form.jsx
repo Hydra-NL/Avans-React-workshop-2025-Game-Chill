@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@apollo/client";
+// import { useMutation } from "@apollo/client";
 
 // Core
 import { Alert, DialogActions, DialogContent, DialogTitle, Stack } from "@mui/material";
@@ -8,22 +8,27 @@ import { Button } from "@/components";
 import { TextField } from "@/fields";
 
 // GraphQL
-import { UPDATE_ME } from "@/graphql";
+// Import GraphQL query
 
 function ProfileUpdateForm(props) {
   const {
+    user,
     onClose,
   } = props;
 
-  const [updateMe] = useMutation(UPDATE_ME);
-
   const { control, handleSubmit, formState, setError } = useForm({
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      // 1.3. Add fields
+    },
     mode: "onChange",
   });
 
   const handleSubmitForm = async values => {
     try {
-      await updateMe({ variables: { dataInput: values } });
+      // 1.3. Form submission
+      console.log(values);
       onClose();
     } catch (error) {
       setError("submitForm", { message: error || "AA0x00" });
@@ -38,16 +43,18 @@ function ProfileUpdateForm(props) {
 
       <DialogContent>
         <form>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" gap={2}>
             <TextField
               name="first_name"
               label="First name"
+              placeholder="Jesse"
               control={control}
             />
 
             <TextField
               name="last_name"
               label="Last name"
+              placeholder="Doe"
               control={control}
             />
           </Stack>
