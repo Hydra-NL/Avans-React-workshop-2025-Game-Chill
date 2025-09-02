@@ -1,167 +1,104 @@
-import { useState } from "react";
-import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 // Core
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Chip,
-  Dialog,
-  DialogTitle,
-  Divider,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { Edit, Favorite } from "@mui/icons-material";
+import { Dialog, DialogTitle, Divider, Stack, Typography } from "@mui/material";
+import { Edit } from "@mui/icons-material";
 import { DefaultLayout } from "@/layouts";
 import { Button } from "@/components";
 
 import GameEventSignUpForm from "../../modules/game_event/forms/game_event_sign_up.form";
 
 // GraphQL
-import { GET_GAME_EVENT } from "@/graphql";
+// Import the GraphQL query
+
+// 3.1. Retrieve data
+// 3.3. Add a way to navigate to the previous page
+// 3.4. Display retrieved data
+// 3.5. Make the page mobile friendly (responsive)
 
 function GameEventPage() {
   const router = useRouter();
-  const gameEventId = router.query.id;
+  const mockGameEventId = router.query.id;
+
+  console.log(mockGameEventId);
 
   const [dialogState, setDialogState] = useState();
 
-  const { data, loading } = useQuery(GET_GAME_EVENT, {
-    variables: { gameEventId },
-    skip: !gameEventId,
-  });
+  const mockUsers = [
+    {
+      id: 1,
+      first_name: "Wout",
+      last_name: "Groenendijk",
+    },
+    {
+      id: 2,
+      first_name: "Pascal",
+      last_name: "Van de Keere",
+    },
+    {
+      id: 3,
+      first_name: "Jeremy",
+      last_name: "Nelemans",
+    },
+    {
+      id: 4,
+      first_name: "Janne",
+      last_name: "Volkers",
+    },
+  ];
 
-  if (loading) return "loading...";
-
-  const gameEvent = data?.getGameEvent || {};
+  const mockGameEvent = {
+    id: 1,
+    title: "5v5 Competitive tournament",
+    main_image_url: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/header.jpg?t=1749053861",
+    description:
+      "Join our 5v5 competitive Counter-Strike 2 tournament!\n" +
+      "Open to all skill levels and ranks, this inhouse event is perfect for players who want a fair, fun, and competitive experience.\n" +
+      "Build your team, sharpen your strategies, and put your FPS skills to the test in a structured PC environment. No voice required—just pure gameplay.",
+    tags: ["Competitive", "Inhouse", "FPS", "Any rank"],
+    game: {
+      title: "Counter-Strike 2",
+      description:
+        "For over two decades, Counter-Strike has offered an elite competitive experience, one shaped by millions of players from across the globe. \n" +
+        "And now the next chapter in the CS story is about to begin. This is Counter-Strike 2.",
+      tags: ["FPS", "Shooter", "Multiplayer", "Competitive", "Action"],
+    },
+    platform: "PC",
+    players: 10,
+    format: "5v5",
+    voice: false,
+    created_by: mockUsers[1],
+    participants: [...mockUsers],
+  };
 
   return (
-    <DefaultLayout title={gameEvent.title}>
-      <Stack alignItems="center" direction="row" justifyContent="space-between" gap={2}>
-        <Typography variant="h4">
-          {gameEvent.title}
-        </Typography>
-
-        <Button
-          endIcon={<Edit />}
-          variant="contained"
-          onClick={() => setDialogState(true)}
+    <DefaultLayout title={mockGameEvent.title}>
+      <Stack alignItems="flex-start" gap={1}>
+        <Stack
+          width="100%"
+          alignItems="center"
+          direction="row"
+          justifyContent="space-between"
+          gap={2}
         >
-          Join event
-        </Button>
+          <Typography variant="h4">
+            {mockGameEvent.title}
+          </Typography>
+
+          <Button
+            endIcon={<Edit />}
+            variant="contained"
+            onClick={() => setDialogState(true)}
+          >
+            Join event
+          </Button>
+        </Stack>
       </Stack>
 
       <Divider sx={{ mt: 2, mb: 3 }} />
 
-      <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 8 }}>
-          <Card variant="outlined">
-            <CardHeader
-              subheader={`Created by: ${gameEvent.created_by?.first_name} ${gameEvent.created_by?.last_name}`}
-            />
-
-            <CardContent>
-              <Stack gap={2}>
-                <Typography variant="body1">
-                  {gameEvent.description}
-                </Typography>
-
-                <Stack direction="row" gap={1}>
-                  {(gameEvent.tags || []).map(eventTag => (
-                    <Chip
-                      key={eventTag}
-                      label={eventTag}
-                      size="small"
-                      color="secondary"
-                    />
-                  ))}
-                </Stack>
-
-                <Divider />
-
-                <Stack>
-                  <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    Settings
-                  </Typography>
-
-                  <Typography variant="body1">
-                    {`Platform: ${gameEvent.platform}`}
-                  </Typography>
-
-                  <Typography variant="body1">
-                    {`Format: ${gameEvent.format}`}
-                  </Typography>
-
-                  <Typography variant="body1">
-                    {`Voice: ${gameEvent.voice ? "Required" : "Not required"}`}
-                  </Typography>
-                </Stack>
-
-                <Divider />
-
-                <Stack>
-                  <Stack direction="row" justifyContent="space-between">
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
-                      Participants
-                    </Typography>
-                  </Stack>
-
-                  {gameEvent.participants?.length !== 0 ? (
-                    (gameEvent.participants || []).map(participant => (
-                      <Stack key={participant.id} direction="row" gap={1}>
-                        <Favorite color="primary" fontSize="small" />
-
-                        <Typography variant="body1">
-                          {participant.first_name}
-                        </Typography>
-                      </Stack>
-                    ))
-                  ) : (
-                    <Typography variant="caption" fontStyle="italic">
-                      No participants yet
-                    </Typography>
-                  )}
-                </Stack>
-              </Stack>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Card variant="outlined">
-            <CardMedia
-              sx={{ height: 180 }}
-              image={gameEvent.main_image_url}
-              title={gameEvent.game?.title}
-            />
-
-            <CardHeader title={gameEvent.game?.title} />
-
-            <CardContent>
-              <Typography variant="body1">
-                {gameEvent.game?.description}
-              </Typography>
-
-              <Stack direction="row" gap={1} mt={2}>
-                {(gameEvent.game?.tags || []).map(gameTag => (
-                  <Chip
-                    key={gameTag}
-                    label={gameTag}
-                    size="small"
-                    variant="outlined"
-                    color="primary"
-                  />
-                ))}
-              </Stack>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      {/* Tip: Using MUI's Grid component is useful in creating responsive content */}
 
       <Dialog
         open={dialogState}

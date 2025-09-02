@@ -11,7 +11,7 @@ const gameEventSchema = new mongoose.Schema({
   game: {
     title: String,
     description: String,
-    tags: [String],
+    tag: String,
   },
 
   // Mongoose Schema

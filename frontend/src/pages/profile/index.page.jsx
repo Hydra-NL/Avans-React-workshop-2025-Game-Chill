@@ -57,7 +57,7 @@ function ProfilePage() {
         open={dialogState}
         onClose={() => setDialogState(false)}
       >
-        <ProfileUpdateForm onClose={() => setDialogState(false)} />
+        <ProfileUpdateForm onClose={() => setDialogState(false)} user={user} />
       </Dialog>
     </DefaultLayout>
   );

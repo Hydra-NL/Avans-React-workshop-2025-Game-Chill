@@ -1,33 +1,18 @@
 import Link from "next/link";
-import { useMutation } from "@apollo/client";
 
 // Core
 import { useTheme } from "@mui/material/styles";
 import { Box, Card, CardContent, CardMedia, Chip, IconButton, Stack, Typography } from "@mui/material";
-import { Delete, Mic, MicOff, People } from "@mui/icons-material";
+import { Delete, Edit, Mic, MicOff, People } from "@mui/icons-material";
 
 // Style
 import styles from "./game_event_card.style";
 
-// GraphQL
-import { DELETE_GAME_EVENT } from "@/graphql";
-
 function GameEventCard(props) {
-  const { gameEvent, refetch } = props;
+  const { gameEvent, onUpdate, onDelete } = props;
 
   const theme = useTheme();
   const classes = styles(theme);
-
-  const [deleteGameEvent] = useMutation(DELETE_GAME_EVENT);
-
-  const handleDelete = async () => {
-    try {
-      await deleteGameEvent({ variables: { gameEventId: gameEvent.id } });
-      refetch();
-    } catch (error) {
-      console.error("error", error);
-    }
-  };
 
   return (
     <Card css={classes.card}>
@@ -48,12 +33,21 @@ function GameEventCard(props) {
             </Typography>
           </Link>
 
-          <IconButton
-            onClick={handleDelete}
-            css={classes.deleteButton}
-          >
-            <Delete />
-          </IconButton>
+          <Stack direction="row">
+            <IconButton
+              onClick={onUpdate}
+              css={classes.button}
+            >
+              <Edit />
+            </IconButton>
+
+            <IconButton
+              onClick={onDelete}
+              css={classes.button}
+            >
+              <Delete />
+            </IconButton>
+          </Stack>
         </Box>
 
         <Typography variant="body2" color="textSecondary" paragraph>

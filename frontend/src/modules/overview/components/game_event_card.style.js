@@ -4,6 +4,10 @@ const styles = theme => ({
     borderRadius: "12px",
     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
     transition: "all 0.3s ease",
+    height: "100%",
+    [theme.breakpoints.down("lg")]: {
+      flexDirection: "column",
+    },
   },
 
   cardMedia: {
@@ -12,6 +16,10 @@ const styles = theme => ({
     flexShrink: 0,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    [theme.breakpoints.down("lg")]: {
+      height: 120,
+      width: "100%",
+    },
   },
 
   clickableTitle: {
@@ -23,7 +31,7 @@ const styles = theme => ({
     },
   },
 
-  deleteButton: {
+  button: {
     color: "#d32f2f",
     padding: theme.spacing(0.5),
     "&:hover": {
