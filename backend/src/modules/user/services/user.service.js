@@ -6,6 +6,8 @@ const processUpdateMe = async (currentUser, args) => {
   try {
     const { dataInput } = args;
 
+    // 1. Profile page
+    // 1.4. Update counter logic
     // dataInput.update_count = currentUser.update_count ? currentUser.update_count + 1 : 1;
     // if (currentUser.update_count >= 10) {
     //   throw new Error("Max update count");

@@ -1,6 +1,8 @@
+// 1. Profile page
 import { Fragment } from "react";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@apollo/client";
+// 1.3. Make the form submit the update
+// import { useMutation } from "@apollo/client";
 
 // Core
 import { Alert, DialogActions, DialogContent, DialogTitle, Stack } from "@mui/material";
@@ -8,7 +10,8 @@ import { NumberField, SelectField, TextField } from "@/fields";
 import { Button } from "@/components";
 
 // GraphQL
-import { UPDATE_ME } from "@/graphql";
+// 1.3. Make the form submit the update
+// import { UPDATE_ME } from "@/graphql";
 
 function ProfileUpdateForm(props) {
   const {
@@ -16,7 +19,7 @@ function ProfileUpdateForm(props) {
     onClose,
   } = props;
 
-  const [updateMe] = useMutation(UPDATE_ME);
+  // const [updateMe] = useMutation(UPDATE_ME);
 
   const { control, handleSubmit, formState, setError, setValue } = useForm({
     defaultValues: {
@@ -31,9 +34,11 @@ function ProfileUpdateForm(props) {
     mode: "onChange",
   });
 
+  // 1.3. Make the form submit the update
   const handleSubmitForm = async values => {
+    console.log(values);
     try {
-      await updateMe({ variables: { dataInput: values } });
+      // await updateMe({ variables: { dataInput: values } });
       onClose();
     } catch (error) {
       setError("submitForm", { message: error || "AA0x00" });
@@ -50,12 +55,13 @@ function ProfileUpdateForm(props) {
 
       <DialogContent>
         <form>
-          <TextField
+          {/* 1.2. Display new fields in the profle page */}
+          {/* <TextField
             name="gamer_tag"
             label="Gamer tag"
             placeholder="Jessenator#123"
             control={control}
-          />
+          /> */}
 
           <Stack direction="row" gap={2}>
             <TextField
@@ -73,7 +79,7 @@ function ProfileUpdateForm(props) {
             />
           </Stack>
 
-          <TextField
+          {/* <TextField
             name="email"
             label="Email"
             placeholder="gamer_tag@email.com"
@@ -109,7 +115,7 @@ function ProfileUpdateForm(props) {
             control={control}
             rows={4}
             multiline
-          />
+          /> */}
 
           {formState.errors?.submitForm && (
             <Alert severity="error">

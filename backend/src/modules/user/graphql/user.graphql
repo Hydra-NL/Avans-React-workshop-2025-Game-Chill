@@ -1,3 +1,4 @@
+# 1. Profile page
 extend type Query {
   me: User
 }
@@ -16,27 +17,30 @@ type User {
   status: String
   update_count: Int
 
-  gamer_tag: String,
-  description: String,
-  tagline: String,
-  age: Int,
-  city: String,
-  country: String,
-  bio: String,
-  platform: String,
-  genre: String,
-  availability: String,
-  play_style: String,
+  # 1.2. Update GraphQL schema
+  # gamer_tag: String,
+  # description: String,
+  # tagline: String,
+  # age: Int,
+  # city: String,
+  # country: String,
+  # bio: String,
+  # platform: String,
+  # genre: String,
+  # availability: String,
+  # play_style: String,
 }
 
 input MeInput {
   first_name: String
   last_name: String
-  email: String
-  status: String
-  gamer_tag: String
-  age: Int
-  platform: String
-  bio: String
+
+  # 1.3. Add fields to update more of the user
+  # email: String
+  # status: String
+  # gamer_tag: String
+  # age: Int
+  # platform: String
+  # bio: String
 }
 

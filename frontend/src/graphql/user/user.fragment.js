@@ -9,5 +9,19 @@ export const AUTH_FRAGMENT = gql`
     last_name
     status
     platform
+
+    # 1. Profile page
+    # 1.2. Update GraphQL Frontend query
+    # gamer_tag
+    # description
+    # tagline
+    # age
+    # city
+    # country
+    # bio
+    # platform
+    # genre
+    # availability
+    # play_style
   }
 `;

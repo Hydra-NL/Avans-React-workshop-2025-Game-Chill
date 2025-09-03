@@ -8,17 +8,20 @@ export const UPDATE_ME = gql`
       email
       last_name
       first_name
-      gamer_tag
-      description
-      tagline
-      age
-      city
-      country
-      bio
-      platform
-      genre
-      availability
-      play_style
+
+      # 1. Profile page
+      # 1.3. Update GraphQL Frontend mutation
+      # gamer_tag
+      # description
+      # tagline
+      # age
+      # city
+      # country
+      # bio
+      # platform
+      # genre
+      # availability
+      # play_style
     }
   }
 `;

@@ -10,17 +10,19 @@ const schema = new mongoose.Schema({
   update_count: { type: Number, default: 0 },
   status: { type: String, enum: Object.values(USER_STATUS) },
 
-  gamer_tag: String,
-  description: String,
-  tagline: String,
-  age: Number,
-  city: String,
-  country: String,
-  bio: String,
-  platform: String,
-  genre: String,
-  availability: String,
-  play_style: String,
+  // 1. Profile page
+  // 1.2. Update mongoose model with missing fields that are present in the database
+  // gamer_tag: String,
+  // description: String,
+  // tagline: String,
+  // age: Number,
+  // city: String,
+  // country: String,
+  // bio: String,
+  // platform: String,
+  // genre: String,
+  // availability: String,
+  // play_style: String,
 }, {
   timestamps: true,
 });
