@@ -133,7 +133,7 @@ Mac
 --- --- --- --- --- ---
 
 # 3. Detail page - **Completely Solo**
-1. Retrieve data
+1. Retrieve real data
 2. Add loading skeletons
 3. Add a way to navigate to the previous page
 4. Display retrieved data
