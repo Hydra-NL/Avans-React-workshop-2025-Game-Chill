@@ -16,12 +16,14 @@ function ProfileInfo(props) {
             </Typography>
 
             <Stack direction="row" spacing={1} flexWrap="wrap">
-              <Chip
-                label={user.platform}
-                size="small"
-                color="primary"
-                variant="outlined"
-              />
+              {user.platform ? (
+                <Chip
+                  label={user.platform}
+                  size="small"
+                  color="primary"
+                  variant="outlined"
+                />
+              ) : "-"}
             </Stack>
           </Box>
 
@@ -31,12 +33,13 @@ function ProfileInfo(props) {
             </Typography>
 
             <Box display="flex" flexWrap="wrap" gap={1}>
-              <Chip
-                label={user.genre}
-                size="small"
-                variant="filled"
-                color="secondary"
-              />
+              {user.genre ? (
+                <Chip
+                  label={user.genre}
+                  size="small"
+                  color="secondary"
+                />
+              ) : "-"}
             </Box>
           </Box>
 

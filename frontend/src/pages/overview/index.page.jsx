@@ -21,6 +21,8 @@ function OverviewPage() {
 
   const { data, loading, refetch } = useQuery(GET_GAME_EVENTS);
 
+  console.log(data);
+
   if (loading) return <OverviewPageSkeleton />;
 
   const gameEvents = data?.getGameEvents?.game_events || [];

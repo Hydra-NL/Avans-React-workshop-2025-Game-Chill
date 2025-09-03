@@ -8,9 +8,17 @@ export const UPDATE_ME = gql`
       email
       last_name
       first_name
-      gamertag
+      gamer_tag
+      description
+      tagline
       age
+      city
+      country
+      bio
       platform
+      genre
+      availability
+      play_style
     }
   }
 `;

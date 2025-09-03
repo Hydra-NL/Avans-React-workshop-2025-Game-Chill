@@ -23,7 +23,7 @@ function ProfileUpdateForm(props) {
       first_name: user.first_name,
       last_name: user.last_name,
       email: user.email,
-      gamertag: user.gamertag,
+      gamer_tag: user.gamer_tag,
       age: user.age,
       bio: user.bio,
       platform: user.platform,
@@ -51,7 +51,7 @@ function ProfileUpdateForm(props) {
       <DialogContent>
         <form>
           <TextField
-            name="gamertag"
+            name="gamer_tag"
             label="Gamer tag"
             placeholder="Jessenator#123"
             control={control}
@@ -76,7 +76,7 @@ function ProfileUpdateForm(props) {
           <TextField
             name="email"
             label="Email"
-            placeholder="gamertag@email.com"
+            placeholder="gamer_tag@email.com"
             control={control}
           />
 

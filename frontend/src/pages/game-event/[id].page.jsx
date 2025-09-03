@@ -20,7 +20,7 @@ import { ArrowBack, Edit, Favorite } from "@mui/icons-material";
 import { DefaultLayout, GameEventPageSkeleton } from "@/layouts";
 import { Button } from "@/components";
 
-import GameEventSignUpForm from "../../modules/game_event/forms/game_event_sign_up.form";
+import GameEventSignUpForm from "../../modules/game-event/forms/game_event_sign_up.form";
 
 // GraphQL
 import { GET_GAME_EVENT } from "@/graphql";
@@ -178,7 +178,7 @@ function GameEventPage() {
           </Typography>
         </DialogTitle>
 
-        <GameEventSignUpForm onClose={() => setDialogState(false)} />
+        <GameEventSignUpForm gameEvent={gameEvent} onClose={() => setDialogState(false)} />
       </Dialog>
     </DefaultLayout>
   );

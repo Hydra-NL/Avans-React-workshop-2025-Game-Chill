@@ -1,11 +1,7 @@
 import { useMutation } from "@apollo/client";
 
 // Core
-import {
-  Button,
-  DialogActions,
-  DialogContent,
-} from "@mui/material";
+import { Button, DialogActions, DialogContent, Typography } from "@mui/material";
 
 // GraphQL
 import { DELETE_GAME_EVENT } from "@/graphql";
@@ -28,7 +24,9 @@ function GameEventDeleteForm(props) {
   return (
     <form>
       <DialogContent>
-        <p>Weet je zeker dat je de game event wilt verwijderen?</p>
+        <Typography variant="body1">
+          {`Weet je zeker dat je "${gameEvent.title}" wilt verwijderen?`}
+        </Typography>
       </DialogContent>
 
       <DialogActions>

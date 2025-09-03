@@ -24,7 +24,8 @@ What are we going to create?
 
 ## Setup Node 24.2.0
 Win
-- Download: https://github.com/coreybutler/nvm-windows
+- Go to: https://github.com/coreybutler/nvm-windows
+- Click the blue "Download Now!" button in the README.md
 - `nvm install 24.2.0`
 - `nvm use 24.2.0`
 
@@ -40,7 +41,11 @@ Mac
 **Goal:** Replace hardcoded data with real GraphQL query data
 - There is a hardcoded constant ready, which has to be replaced with real data
 - Pass props to the correct components
-- **Files:** `frontend/src/pages/profile/index.page.jsx`, `frontend/src/modules/profile/components`
+
+- **Files:** 
+  - `frontend/src/pages/profile/index.page.jsx`, 
+  - `frontend/src/modules/profile/components/profile_info_card.jsx`
+  - `frontend/src/modules/profile/components/profile_preference_card.jsx`
 
 ### 2. Expand Database Fields - Demo/Solo
 **Goal:** Retrieve more User fields from the database
@@ -49,20 +54,30 @@ Mac
 - Update GraphQL schema and FE query
 - Display the new fields in the profile page
 - **Bonus**: Add even more fields to the database that weren't present before and retrieve those as well
-- **Files:** `user.model.js`, `user.graphql`, `user.fragment.js`
+
+- **Files:** 
+  - `user.model.js` 
+  - `user.graphql`
+  - `user.fragment.js`
 
 ### 3. Update Form Dialog - Demo
 **Goal:** Update functionality
 - Form submission
 - Mutation
 - Add field
-- **Files:** `user.mutation.js`, `profile_update.form.jsx`
+
+- **Files:** 
+  - `user.mutation.js`
+  - `profile_update.form.jsx`
 
 ### 4. Update Counter & Debug - Demo
 **Goal:** Implement update count with error
 - Update counter logic
 - Error debugging for max updates
-- **Files:** `user.service.js`, `user.fragment.js`
+
+- **Files:** 
+  - `user.service.js` 
+  - `user.fragment.js`
 
 ### 5. GraphQL Caching - Demo
 **Goal:** GraphQL caching
@@ -79,18 +94,29 @@ Mac
 - Create a new query
 - Connect the query with the component
 
+- **Files:** 
+  - `frontend/src/pages/overview/index.page.jsx`
+
 ### 2. Create your own Card component
 **Goal:** Create a new Card component to use in the overview page
 - Add to the basic GameEventCard
 - Style the card with Material-UI components
 - Add gaming-specific fields (rating, genre, players)  
 - **Bonus:** Add a loader to the Overview page (skeleton)
-- **Files:** `frontend/src/modules/overview/components/game_event_card.jsx`
+
+- **Files:** 
+  - `frontend/src/modules/overview/components/game_event_card.jsx`
+
+- **Links:**
+  - https://mui.com/material-ui/all-components/
 
 ### 3. Create Card Form Mutation - **Demo/Solo**
 **Goal:** Implement functionality to create new Game Events
 - Create a Dialog with a form with inputs for Game Event creation
 - GraphQL mutation resolver/schema
+
+- **Files:** 
+  - `frontend/src/modules/overview/forms/game_event_general.form.jsx`
 
 ### 4. Delete Card with Confirmation - **Solo**
 **Goal:** Implement delete-functionality with confirmation
@@ -99,7 +125,10 @@ Mac
 - UI feedback (loading states, success/error messages)
 - Cache update after successful delete
 - **Bonus:** Undo functionality
-- **Files:** `backend/src/modules/game_event/graphql/game_event.graphql`, `frontend/src/modules/overview/forms/game_event_delete.form.jsx`
+
+- **Files:** 
+  - `backend/src/modules/game_event/graphql/game_event.graphql`
+  - `frontend/src/modules/overview/forms/game_event_delete.form.jsx`
 
 --- --- --- --- --- ---
 

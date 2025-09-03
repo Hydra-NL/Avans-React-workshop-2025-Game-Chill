@@ -1,7 +1,7 @@
 const styles = theme => ({
   card: {
     display: "flex",
-    borderRadius: "12px",
+    borderRadius: 12,
     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
     transition: "all 0.3s ease",
     height: "100%",
@@ -9,7 +9,6 @@ const styles = theme => ({
       flexDirection: "column",
     },
   },
-
   cardMedia: {
     height: 210,
     width: 140,
@@ -20,6 +19,10 @@ const styles = theme => ({
       height: 120,
       width: "100%",
     },
+  },
+  cardContent: {
+    width: "100%",
+    paddingBottom: 16,
   },
 
   clickableTitle: {

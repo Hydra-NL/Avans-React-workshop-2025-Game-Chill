@@ -14,10 +14,7 @@ function Button(props) {
   const classes = styles(theme);
 
   return (
-    <MuiButton
-      {...rest}
-      css={classes.button}
-    >
+    <MuiButton {...rest} css={classes.button}>
       {children}
     </MuiButton>
   );

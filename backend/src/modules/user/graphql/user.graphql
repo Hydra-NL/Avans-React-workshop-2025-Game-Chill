@@ -16,10 +16,17 @@ type User {
   status: String
   update_count: Int
 
-  gamertag: String
-  age: Int
-  platform: String
-  bio: String
+  gamer_tag: String,
+  description: String,
+  tagline: String,
+  age: Number,
+  city: String,
+  country: String,
+  bio: String,
+  platform: String,
+  genre: String,
+  availability: String,
+  play_style: String,
 }
 
 input MeInput {
@@ -27,7 +34,7 @@ input MeInput {
   last_name: String
   email: String
   status: String
-  gamertag: String
+  gamer_tag: String
   age: Int
   platform: String
   bio: String

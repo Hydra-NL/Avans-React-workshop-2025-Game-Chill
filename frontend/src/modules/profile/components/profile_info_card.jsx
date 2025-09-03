@@ -39,13 +39,13 @@ function ProfileInfo(props) {
             </Typography>
 
             <Typography variant="h6" color="primary">
-              {user.gamertag || "guest#1234"}
+              {user.gamer_tag || "guest#1234"}
             </Typography>
           </Box>
         </div>
 
         <Typography variant="body1" color="textSecondary" paragraph>
-          {user.tagline}
+          {user.tagline || "This user is the mysterious type"}
         </Typography>
 
         <Typography variant="body2">

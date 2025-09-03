@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
   update_count: { type: Number, default: 0 },
   status: { type: String, enum: Object.values(USER_STATUS) },
 
-  gamertag: String,
+  gamer_tag: String,
   description: String,
   tagline: String,
   age: Number,

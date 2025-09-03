@@ -22,56 +22,53 @@ function GameEventCard(props) {
         image={gameEvent.main_image_url}
       />
 
-      <CardContent>
-        <Box mb={2} display="flex" justifyContent="space-between">
-          <Link href={`/game-event/${gameEvent.id}`} passHref>
-            <Typography
-              variant="h6"
-              css={classes.clickableTitle}
-            >
-              {gameEvent.title}
+      <CardContent css={classes.cardContent}>
+        <Stack justifyContent="space-between" height="100%">
+          <div>
+            <Box mb={2} display="flex" justifyContent="space-between">
+              <Link href={`/game-event/${gameEvent.id}`} passHref>
+                <Typography variant="h6" css={classes.clickableTitle}>
+                  {gameEvent.title}
+                </Typography>
+              </Link>
+
+              <Stack direction="row">
+                <IconButton onClick={onUpdate} css={classes.button}>
+                  <Edit />
+                </IconButton>
+
+                <IconButton onClick={onDelete} css={classes.button}>
+                  <Delete />
+                </IconButton>
+              </Stack>
+            </Box>
+
+            <Typography variant="body2" color="textSecondary" paragraph>
+              {gameEvent.description}
             </Typography>
-          </Link>
+          </div>
 
-          <Stack direction="row">
-            <IconButton
-              onClick={onUpdate}
-              css={classes.button}
-            >
-              <Edit />
-            </IconButton>
+          <Stack direction="row" gap={2}>
+            <Chip
+              label={gameEvent.platform}
+              css={classes.platformChip}
+              variant="outlined"
+              size="small"
+              color="primary"
+            />
 
-            <IconButton
-              onClick={onDelete}
-              css={classes.button}
-            >
-              <Delete />
-            </IconButton>
+            <Box css={classes.detailItem}>
+              <People fontSize="small" />
+
+              {`${gameEvent.players} players`}
+            </Box>
+
+            <Box css={classes.detailItem}>
+              {gameEvent.voice ? <Mic fontSize="small" /> : <MicOff fontSize="small" />}
+
+              {gameEvent.voice ? "Voice chat" : "No voice"}
+            </Box>
           </Stack>
-        </Box>
-
-        <Typography variant="body2" color="textSecondary" paragraph>
-          {gameEvent.description}
-        </Typography>
-
-        <Stack direction="row" gap={2}>
-          <Chip
-            label={gameEvent.platform}
-            css={classes.platformChip}
-            variant="outlined"
-            size="small"
-            color="primary"
-          />
-
-          <Box css={classes.detailItem}>
-            <People fontSize="small" />
-            {`${gameEvent.players} players`}
-          </Box>
-
-          <Box css={classes.detailItem}>
-            {gameEvent.voice ? <Mic fontSize="small" /> : <MicOff fontSize="small" />}
-            {gameEvent.voice ? "Voice chat" : "No voice"}
-          </Box>
         </Stack>
       </CardContent>
     </Card>

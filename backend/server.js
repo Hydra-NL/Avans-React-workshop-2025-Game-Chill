@@ -35,9 +35,10 @@ Server.use(express.json());
 Server.use(express.urlencoded({ extended: true }));
 
 // Hardcoded session middleware
+// ! Change `userId` to which ever user you want to use
 // -------------------------------------------------------------
 Server.use((req, res, next) => {
-  req.session = { userId: "68b446eced5d7815c25d64a4" };
+  req.session = { userId: "" };
   next();
 });
 

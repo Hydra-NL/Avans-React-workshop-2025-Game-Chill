@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 
 // Core
-import { Button, DialogActions, DialogContent, DialogTitle, Stack, Typography } from "@mui/material";
+import { Box, Button, DialogActions, DialogContent, DialogTitle, Divider, Stack, Typography } from "@mui/material";
 import { NumberField, TextField } from "@/fields";
 
 // Utils
@@ -45,7 +45,11 @@ function GameEventCreateForm(props) {
         </Typography>
       </DialogTitle>
 
-      <DialogContent>
+      <DialogContent sx={{ paddingTop: 0 }}>
+        <Typography variant="caption" paragraph>
+          Enter details about the event itself below.
+        </Typography>
+
         <Stack gap={1}>
           <TextField
             name="title"
@@ -73,8 +77,18 @@ function GameEventCreateForm(props) {
             control={control}
           />
 
+          <Box my={1}>
+            <Divider />
+          </Box>
+
           <Stack gap={1}>
-            <Typography variant="h6">Game Details</Typography>
+            <Typography variant="h6">
+              Game Details
+            </Typography>
+
+            <Typography variant="caption">
+              Enter details about the game that will be played during the event below.
+            </Typography>
 
             <TextField
               name="game.title"
@@ -87,7 +101,7 @@ function GameEventCreateForm(props) {
               label="Game Description"
               control={control}
               multiline
-              rows={2}
+              rows={4}
             />
 
             <TextField
