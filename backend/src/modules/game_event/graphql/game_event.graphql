@@ -3,10 +3,12 @@ extend type Query {
   getGameEvents: GameEventList
 }
 
+# 2. Overview page
+# 2.4. Create a GraphQL mutation for the DELETE operation
 extend type Mutation {
   createGameEvent(dataInput: GameEventInput): GameEvent
   updateGameEvent(gameEventId: ID!, dataInput: GameEventInput): GameEvent
-  deleteGameEvent(gameEventId: ID!): Boolean
+  # deleteGameEvent(gameEventId: ID!): Boolean
 }
 
 # Game event list

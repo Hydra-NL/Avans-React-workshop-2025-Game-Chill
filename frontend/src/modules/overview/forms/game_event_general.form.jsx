@@ -1,4 +1,6 @@
-import { useMutation } from "@apollo/client";
+// 2. Overview Page
+// 2.3. Create Card Form Mutation
+// import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 
 // Core
@@ -9,13 +11,13 @@ import { NumberField, TextField } from "@/fields";
 import { setGameEventFormValues } from "./_default_values";
 
 // GraphQL
-import { CREATE_GAME_EVENT, UPDATE_GAME_EVENT } from "@/graphql";
+// import { CREATE_GAME_EVENT, UPDATE_GAME_EVENT } from "@/graphql";
 
 function GameEventCreateForm(props) {
   const { onClose, refetch, gameEvent } = props;
 
-  const [createGameEvent] = useMutation(CREATE_GAME_EVENT);
-  const [updateGameEvent] = useMutation(UPDATE_GAME_EVENT);
+  // const [createGameEvent] = useMutation(CREATE_GAME_EVENT);
+  // const [updateGameEvent] = useMutation(UPDATE_GAME_EVENT);
 
   const { control, formState, handleSubmit, setError } = useForm({
     defaultValues: setGameEventFormValues(gameEvent),
@@ -23,11 +25,13 @@ function GameEventCreateForm(props) {
   });
 
   const handleSubmitForm = async values => {
+    console.log(values);
+
     try {
       if (gameEvent?.id) {
-        await updateGameEvent({ variables: { gameEventId: gameEvent.id, dataInput: values } });
+        // await updateGameEvent({ variables: { gameEventId: gameEvent.id, dataInput: values } });
       } else {
-        await createGameEvent({ variables: { dataInput: values } });
+        // await createGameEvent({ variables: { dataInput: values } });
       }
 
       refetch();

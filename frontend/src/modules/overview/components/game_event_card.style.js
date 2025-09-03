@@ -1,4 +1,6 @@
 const styles = theme => ({
+  // 2. Overview page
+  // 2.2. Edit or add styling to change up the card to your vision
   card: {
     display: "flex",
     borderRadius: 12,

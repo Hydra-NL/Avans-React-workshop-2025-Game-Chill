@@ -43,13 +43,15 @@ function GameEventCard(props) {
               </Stack>
             </Box>
 
-            <Typography variant="body2" color="textSecondary" paragraph>
+            {/* <Typography variant="body2" color="textSecondary" paragraph>
               {gameEvent.description}
-            </Typography>
+            </Typography> */}
+
+            {/* 2.2. Add to the basic GameEventCard */}
           </div>
 
           <Stack direction="row" gap={2}>
-            <Chip
+            {/* <Chip
               label={gameEvent.platform}
               css={classes.platformChip}
               variant="outlined"
@@ -67,7 +69,7 @@ function GameEventCard(props) {
               {gameEvent.voice ? <Mic fontSize="small" /> : <MicOff fontSize="small" />}
 
               {gameEvent.voice ? "Voice chat" : "No voice"}
-            </Box>
+            </Box> */}
           </Stack>
         </Stack>
       </CardContent>

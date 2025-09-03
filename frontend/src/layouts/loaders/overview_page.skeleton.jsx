@@ -1,12 +1,14 @@
+// 2. Overview page
+// 2.2. Add a loader to the Overview page
 // Core
-import { Box, Divider, Grid, Skeleton, Stack, Typography } from "@mui/material";
+// import { Box, Divider, Grid, Skeleton, Stack, Typography } from "@mui/material";
 
 import DefaultLayout from "../default.layout";
 
 function OverviewPageSkeleton() {
   return (
     <DefaultLayout>
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <Typography variant="h6">
           <Skeleton height={60} width={200} />
         </Typography>
@@ -24,7 +26,7 @@ function OverviewPageSkeleton() {
             <Skeleton height={210} variant="rounded" />
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
     </DefaultLayout>
   );
 }
