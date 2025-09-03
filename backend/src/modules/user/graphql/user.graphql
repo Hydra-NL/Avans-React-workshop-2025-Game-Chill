@@ -19,7 +19,7 @@ type User {
   gamer_tag: String,
   description: String,
   tagline: String,
-  age: Number,
+  age: Int,
   city: String,
   country: String,
   bio: String,
