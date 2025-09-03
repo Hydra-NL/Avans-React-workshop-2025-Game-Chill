@@ -36,11 +36,10 @@ Mac
 - `nvm use 24.2.0`
 
 --- --- --- --- --- ---
-# 1. Profile Page Development
+# 1. Profile page
 ### 1. Query Data Integration - Demo
 **Goal:** Replace hardcoded data with real GraphQL query data
 - There is a hardcoded constant ready, which has to be replaced with real data
-- Pass props to the correct components
 
 **Files:**
   - `frontend/src/pages/profile/index.page.jsx`, 
@@ -49,26 +48,28 @@ Mac
 
 ### 2. Expand Database Fields - Demo/Solo
 **Goal:** Retrieve more User fields from the database
-- Study the database schema in MongoCompass
 - Update mongoose model with missing fields that are present in the database
-- Update GraphQL schema and FE query
+  - Check this by using the `console.log()` function
+- Update GraphQL Backend schema
+- Update GraphQL Frontend query
 - Display the new fields in the profile page
 - **Bonus**: Add even more fields to the database that weren't present before and retrieve those as well
 
 **Files:**
-  - `user.model.js` 
-  - `user.graphql`
-  - `user.fragment.js`
+  - `backend/src/modules/user/graphql/user.graphql` 
+  - `backend/src/modules/user/models/user.model.js`
+  - `frontend/src/graphql/user/user.fragment.js`
 
 ### 3. Update Form Dialog - Demo
 **Goal:** Update functionality
-- Form submission
-- Mutation
-- Add field
+- Make the form submit the update
+- Update GraphQL Frontend mutation
+- Add fields to update more of the user
 
 **Files:**
-  - `user.mutation.js`
-  - `profile_update.form.jsx`
+  - `backend/src/modules/user/graphql/user.graphql`
+  - `frontend/src/graphql/user/user.mutation.js`
+  - `frontend/src/modules/profile/forms/profile_update.form.jsx`
 
 ### 4. Update Counter & Debug - Demo
 **Goal:** Implement update count with error
@@ -76,8 +77,7 @@ Mac
 - Error debugging for max updates
 
 **Files:**
-  - `user.service.js` 
-  - `user.fragment.js`
+  - `backend/src/modules/user/services/user.service.js` 
 
 ### 5. GraphQL Caching - Demo
 **Goal:** GraphQL caching
