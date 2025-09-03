@@ -118,7 +118,7 @@ function GameEventPage() {
                     </Typography>
                   </Stack>
 
-                  {gameEvent.participants?.length < 0 ? (
+                  {gameEvent.participants?.length > 0 ? (
                     (gameEvent.participants || []).map(participant => (
                       <Stack key={participant.id} direction="row" gap={1}>
                         <Favorite color="primary" fontSize="small" />
